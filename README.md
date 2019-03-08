@@ -88,4 +88,4 @@ changed: [testserver]
 testserver                 : ok=6    changed=1    unreachable=0    failed=0
 ```
 #### HTML Rendered
-
+<img src="https://github.com/carissaallen/ansible-sandbox/blob/master/playbooks/images/web-notls-browser-output.jpg" alt="Browser Output" height="250">
