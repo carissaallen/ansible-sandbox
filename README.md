@@ -18,6 +18,7 @@ Configures a host to run an Nginx web server. Although a proper website should h
 #### Run
 `ansible-playbook web-notls-playbook.yml`
 #### Output
+Any Ansible task that runs has the potential to change the state of the host in some way. Ansible modules will first check to see whether the state of the host needs to be changed before taking any action. If the state of the host matches the arguments of the module, Ansible takes no action on the host and responds with a state of `ok`. If there is a difference between the state of the host and the arguments to the module, Ansible will change the state of the host and return `changed`. 
 ```
  _______________________________________
 < PLAY [Configure webserver with nginx] >
@@ -99,6 +100,8 @@ changed: [testserver]
 
 testserver                 : ok=6    changed=1    unreachable=0    failed=0
 ```
+Ansible's detection of state change: The `install nginx` task was changed, which means that, before I ran the playbook, the _nginx_ package had not previously been installed on the host. The `enable configuration` task was unchanged, which meant that there was already a configuration file on the server that was identical to the file I was copying over.
+
 #### HTML Rendered
 <img src="https://github.com/carissaallen/ansible-sandbox/blob/master/playbooks/images/web-notls-browser-output.jpg" alt="Browser Output" height="250">
 
