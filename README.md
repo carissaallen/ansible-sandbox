@@ -7,14 +7,11 @@ A list of dictionaries! Or, more specifically, a list of _plays_. A playbook sho
 
 Plays also support optional settings, such as:
 
-`name` <br>
-_A comment that describes what the play is about; Ansible prints this out when the play starts to run._
+`name` _A comment that describes what the play is about; Ansible prints this out when the play starts to run._
 
-`become` <br>
-_If true, Ansible will run every task by becoming (by default) the root user. This is useful when managing Ubuntu servers, since by default you cannot SSH as the root user._
+`become` _If true, Ansible will run every task by becoming (by default) the root user. This is useful when managing Ubuntu servers, since by default you cannot SSH as the root user._
 
-`vars` <br>
-_A list of variables and values._
+`vars` _A list of variables and values._
 
 ### First Playbook 
 Configures a host to run an Nginx web server. Although a proper website should have Transport Layer Security (TLS) encryption enabled, I am leaving this out for simplicity's sake in my first playbook.
