@@ -104,3 +104,22 @@ testserver                 : ok=6    changed=1    unreachable=0    failed=0
 ```
 #### HTML Rendered
 <img src="https://github.com/carissaallen/ansible-sandbox/blob/master/playbooks/images/web-notls-browser-output.jpg" alt="Browser Output" height="250">
+
+## Modules
+Scripts that come packaged with Ansible to perform some action on a host.
+
+### Example Modules
+`apt`
+_Installs or removes packages by using the apt package manager._
+
+`copy`
+_Copies a file from local machine to the hosts._
+
+`file`
+_Sets the attribute of a file, symlink, or directory._
+
+`service`
+_Starts, stops, or restarts a service._
+
+`template`
+_Generates a file from a template and copies it to the hosts._
