@@ -20,87 +20,30 @@ Configures a host to run an Nginx web server. Although a proper website should h
 #### Output
 Any Ansible task that runs has the potential to change the state of the host in some way. Ansible modules will first check to see whether the state of the host needs to be changed before taking any action. If the state of the host matches the arguments of the module, Ansible takes no action on the host and responds with a state of `ok`. If there is a difference between the state of the host and the arguments to the module, Ansible will change the state of the host and return `changed`. 
 ```
- _______________________________________
-< PLAY [Configure webserver with nginx] >
- ---------------------------------------
-        \   ^__^
-         \  (oo)\_______
-            (__)\       )\/\
-                ||----w |
-                ||     ||
+PLAY [Configure webserver with nginx] ***************************************************************
 
- ________________________
-< TASK [Gathering Facts] >
- ------------------------
-        \   ^__^
-         \  (oo)\_______
-            (__)\       )\/\
-                ||----w |
-                ||     ||
-
+TASK [Gathering Facts] ******************************************************************************
 ok: [testserver]
- ______________________
-< TASK [install nginx] >
- ----------------------
-        \   ^__^
-         \  (oo)\_______
-            (__)\       )\/\
-                ||----w |
-                ||     ||
 
+TASK [install nginx] ********************************************************************************
 ok: [testserver]
- _______________________________
-< TASK [copy nginx config file] >
- -------------------------------
-        \   ^__^
-         \  (oo)\_______
-            (__)\       )\/\
-                ||----w |
-                ||     ||
 
-ok: [testserver]
- _____________________________
-< TASK [enable configuration] >
- -----------------------------
-        \   ^__^
-         \  (oo)\_______
-            (__)\       )\/\
-                ||----w |
-                ||     ||
-
-ok: [testserver]
- ________________________
-< TASK [copy index.html] >
- ------------------------
-        \   ^__^
-         \  (oo)\_______
-            (__)\       )\/\
-                ||----w |
-                ||     ||
-
-ok: [testserver]
- ______________________
-< TASK [restart nginx] >
- ----------------------
-        \   ^__^
-         \  (oo)\_______
-            (__)\       )\/\
-                ||----w |
-                ||     ||
-
+TASK [copy nginx config file] ***********************************************************************
 changed: [testserver]
- ____________
-< PLAY RECAP >
- ------------
-        \   ^__^
-         \  (oo)\_______
-            (__)\       )\/\
-                ||----w |
-                ||     ||
 
-testserver                 : ok=6    changed=1    unreachable=0    failed=0
+TASK [enable configuration] *************************************************************************
+ok: [testserver]
+
+TASK [copy index.html] ******************************************************************************
+changed: [testserver]
+
+TASK [restart nginx] ********************************************************************************
+changed: [testserver]
+
+PLAY RECAP ******************************************************************************************
+testserver                 : ok=6    changed=3    unreachable=0    failed=0
 ```
-Ansible's detection of state change: The `install nginx` task was changed, which means that, before I ran the playbook, the _nginx_ package had not previously been installed on the host. The `enable configuration` task was unchanged, which meant that there was already a configuration file on the server that was identical to the file I was copying over.
+Ansible's detection of state change: The `install nginx` task was unchanged, which means that, before I ran the playbook, the _nginx_ package had already been installed on the host. The `enable configuration` task was unchanged, which meant that there was already a configuration file on the server that was identical to the file I was copying over. However, the `copy index.html` task was changed, which means the _index.html_ file had not been previously copied to the host.
 
 #### HTML Rendered
 <img src="https://github.com/carissaallen/ansible-sandbox/blob/master/playbooks/images/web-notls-browser-output.jpg" alt="Browser Output" height="250">
