@@ -103,7 +103,8 @@ testserver                 : ok=6    changed=1    unreachable=0    failed=0
 <img src="https://github.com/carissaallen/ansible-sandbox/blob/master/playbooks/images/web-notls-browser-output.jpg" alt="Browser Output" height="250">
 
 ## Modules
-Scripts that come packaged with Ansible to perform some action on a host.
+Scripts that come packaged with Ansible to perform some action on a host. To show documentation for a particular module:
+`ansible-doc module-name`
 
 ### Example Modules
 `apt`
