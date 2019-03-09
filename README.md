@@ -51,7 +51,9 @@ Ansible's detection of state change: The `install nginx` task was unchanged, whi
 ### Playbook: web-tls-playbook.yml
 Manually generate a TLS self-signed certificate. The following command generates files _nginx.key_ and _nginx.crt_ in the _files_ directory. The certificate has an expiration date of 10 years (3,650 days) from the day you create it. 
 
-`req -x509 -nodes -days 3650 -newkey rsa:2048 -subj /CN=localhost -keyout files/nginx.key -out files/nginx.crt`
+```
+req -x509 -nodes -days 3650 -newkey rsa:2048 -subj /CN=localhost -keyout files/nginx.key -out files/nginx.crt
+```
 
 ## Modules
 Scripts that come packaged with Ansible to perform some action on a host. To show documentation for a particular module:
