@@ -13,7 +13,7 @@ Plays also support optional settings, such as:
 
 `vars` _A list of variables and values._
 
-### First Playbook 
+### Playbook: web-notls-playbook.yml
 Configures a host to run an Nginx web server. Although a proper website should have Transport Layer Security (TLS) encryption enabled, I am leaving this out for simplicity's sake in my first playbook.
 #### Run
 `ansible-playbook web-notls-playbook.yml`
@@ -44,6 +44,11 @@ PLAY RECAP *********************************************************************
 testserver                 : ok=6    changed=3    unreachable=0    failed=0
 ```
 Ansible's detection of state change: The `install nginx` task was unchanged, which means that, before I ran the playbook, the _nginx_ package had already been installed on the host. The `enable configuration` task was unchanged, which meant that there was already a configuration file on the server that was identical to the file I was copying over. However, the `copy index.html` task was changed, which means the _index.html_ file had not been previously copied to the host.
+
+### Playbook: web-tls-playbook.yml
+Manually generate a TLS self-signed certificate. The following command generates files _nginx.key_ and _nginx.crt_ in the _files_ directory. The certificate has an expiration date of 10 years (3,650 days) from the day you create it. 
+
+`req -x509 -nodes -days 3650 -newkey rsa:2048 -subj /CN=localhost -keyout files/nginx.key -out files/nginx.crt`
 
 #### HTML Rendered
 <img src="https://github.com/carissaallen/ansible-sandbox/blob/master/playbooks/images/web-notls-browser-output.jpg" alt="Browser Output" height="250">
