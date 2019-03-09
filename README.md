@@ -45,13 +45,13 @@ testserver                 : ok=6    changed=3    unreachable=0    failed=0
 ```
 Ansible's detection of state change: The `install nginx` task was unchanged, which means that, before I ran the playbook, the _nginx_ package had already been installed on the host. The `enable configuration` task was unchanged, which meant that there was already a configuration file on the server that was identical to the file I was copying over. However, the `copy index.html` task was changed, which means the _index.html_ file had not been previously copied to the host.
 
+#### HTML Rendered
+<img src="https://github.com/carissaallen/ansible-sandbox/blob/master/playbooks/images/web-notls-browser-output.jpg" alt="Browser Output" height="250">
+
 ### Playbook: web-tls-playbook.yml
 Manually generate a TLS self-signed certificate. The following command generates files _nginx.key_ and _nginx.crt_ in the _files_ directory. The certificate has an expiration date of 10 years (3,650 days) from the day you create it. 
 
 `req -x509 -nodes -days 3650 -newkey rsa:2048 -subj /CN=localhost -keyout files/nginx.key -out files/nginx.crt`
-
-#### HTML Rendered
-<img src="https://github.com/carissaallen/ansible-sandbox/blob/master/playbooks/images/web-notls-browser-output.jpg" alt="Browser Output" height="250">
 
 ## Modules
 Scripts that come packaged with Ansible to perform some action on a host. To show documentation for a particular module:
