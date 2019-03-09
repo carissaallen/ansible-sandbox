@@ -55,6 +55,11 @@ Manually generate a TLS self-signed certificate. The following command generates
 req -x509 -nodes -days 3650 -newkey rsa:2048 -subj /CN=localhost -keyout files/nginx.key -out files/nginx.crt
 ```
 
+## Handlers
+A conditional form that runs only if it has bee notified by a task. A task will fire the notification if Ansible recognizes that the task has changed the state of the system. Tasks may use the `notify` key, passing the handler's name as the argument, to fire the notification if the condition is met.
+
+Handlers run after all the tasks are run at the end of the play. They run once, even if they are notified multiple times. 
+
 ## Modules
 Scripts that come packaged with Ansible to perform some action on a host. To show documentation for a particular module:
 `ansible-doc module-name`
